@@ -1,0 +1,11 @@
+[
+{
+  "directory": "/Users/dmanchon/repos/c_scheme",
+  "arguments": ["/Library/Developer/CommandLineTools/usr/bin/clang", "-c", "-Qunused-arguments", "-isysroot", "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk", "-g", "-O0", "-Ibuild/.gens/c_scheme/macosx/arm64/debug/platform/windows/idl", "-Wno-parentheses-equality", "-o", "build/.objs/c_scheme/macosx/arm64/debug/src/s7.c.o", "src/s7.c"],
+  "file": "src/s7.c"
+},
+{
+  "directory": "/Users/dmanchon/repos/c_scheme",
+  "arguments": ["/Library/Developer/CommandLineTools/usr/bin/clang", "-c", "-Qunused-arguments", "-isysroot", "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk", "-g", "-O0", "-Ibuild/.gens/c_scheme/macosx/arm64/debug/platform/windows/idl", "-Wno-parentheses-equality", "-o", "build/.objs/c_scheme/macosx/arm64/debug/src/main.c.o", "src/main.c"],
+  "file": "src/main.c"
+}]
