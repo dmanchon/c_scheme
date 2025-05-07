@@ -39,7 +39,7 @@ This project uses [xmake](https://xmake.io/) as the build system.
 
 ## Running
 
-By default, the server listens on port 8080 and loads the Scheme script from `src/main.sch`. You can specify a different Scheme file using the `-i` argument:
+By default, the server listens on port 8080. You can specify a different Scheme file using the `-i` argument:
 
 ```bash
-xmake run c_scheme -i main.sch
+./build/macosx/arm64/debug/c_scheme -i main.sch
