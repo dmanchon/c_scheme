@@ -10,6 +10,8 @@ This project is a simple HTTP server written in C that uses the [s7 Scheme inter
 - Pass the Scheme file to use at runtime with the `-i` argument.
 
 ## Project Structure
+
+```
 .
 ├── main.sch        # Scheme script with HTTP routes and handlers
 ├── src/
@@ -18,7 +20,7 @@ This project is a simple HTTP server written in C that uses the [s7 Scheme inter
 │   └── s7.h        # s7 Scheme interpreter header
 ├── xmake.lua       # Build configuration for xmake
 └── .gitignore
-
+```
 
 ## Building
 
