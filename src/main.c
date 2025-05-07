@@ -10,23 +10,17 @@
 #define PORT 8080
 #define BUFFER_SIZE 4096
 
-/* Forward declare Scheme handler */
 static s7_pointer handle_request(s7_scheme *s7, s7_pointer args);
+static char scheme_file_path[1024];
 
-// Add a global or static variable to hold the Scheme file path
-static char scheme_file_path[1024] = "src/main.sch"; // default
-
-/* Thread function to handle each client */
 void* client_handler(void *arg) {
     int client_socket = *(int*)arg;
     free(arg);
 
-    // Read HTTP request
     char buffer[BUFFER_SIZE];
     read(client_socket, buffer, BUFFER_SIZE);
 
-    // Inside client_handler:
-    char *saveptr;  // For strtok_r's context pointer
+    char *saveptr; 
 
     // Parse method
     char *method = strtok_r(buffer, " ", &saveptr);
@@ -44,22 +38,9 @@ void* client_handler(void *arg) {
         return NULL;
     }
 
-    // Remove query params (optional, e.g., "/page?foo=bar" → "/page")
-    char *query_start = strchr(path, '?');
-    if (query_start) *query_start = '\0';
-
     // Initialize s7 for this thread
     s7_scheme *s7 = s7_init();
     s7_pointer load_result = s7_load(s7, scheme_file_path);
-
-    if (s7_is_boolean(load_result) && !s7_boolean(s7, load_result)) {
-        fprintf(stderr, "Error: Failed to load Scheme file '%s'.\n", scheme_file_path);
-        char err_response[] = "HTTP/1.1 500 Internal Server Error\r\n\r\nScheme file load failed.";
-        write(client_socket, err_response, strlen(err_response));
-        close(client_socket);
-        s7_quit(s7);
-        return NULL;
-    }
 
     // Call Scheme handler
     s7_pointer response = handle_request(s7, 
@@ -110,7 +91,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-/* C-to-Scheme request handler */
+/* FFI request handler */
 static s7_pointer handle_request(s7_scheme *s7, s7_pointer args) {
     return s7_call(s7, s7_name_to_value(s7, "handle-request"), args);
 }

@@ -55,10 +55,8 @@
     ((404) "Not Found")
     (else "Unknown")))
 
-;; -----------------------------
-;; Example Routes
-;; -----------------------------
 
+;; TODO: the previous stuff should be injected automatically, user script starts here.
 (add-route "GET" "/" 
   (lambda ()
     (respond 200 "<h1>Home</h1>Hello from C/Scheme!")))
