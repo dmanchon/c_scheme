@@ -7,10 +7,8 @@
 ;; Route Table and Registration
 ;; -----------------------------
 
-;; List of routes: each is (method path handler)
 (define *routes* '())
 
-;; Register a new route
 (define (add-route method path handler)
   (set! *routes* (cons (list method path handler) *routes*)))
 

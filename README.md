@@ -10,3 +10,34 @@ This project is a simple HTTP server written in C that uses the [s7 Scheme inter
 - Pass the Scheme file to use at runtime with the `-i` argument.
 
 ## Project Structure
+.
+├── main.sch        # Scheme script with HTTP routes and handlers
+├── src/
+│   ├── main.c      # C source code for the HTTP server
+│   ├── s7.c        # s7 Scheme interpreter source
+│   └── s7.h        # s7 Scheme interpreter header
+├── xmake.lua       # Build configuration for xmake
+└── .gitignore
+
+
+## Building
+
+This project uses [xmake](https://xmake.io/) as the build system.
+
+1. **Install xmake** (if you don't have it):
+    ```bash
+    brew install xmake
+    ```
+    or see [xmake installation docs](https://xmake.io/#/guide/installation).
+
+2. **Build the project:**
+    ```bash
+    xmake
+    ```
+
+## Running
+
+By default, the server listens on port 8080 and loads the Scheme script from `src/main.sch`. You can specify a different Scheme file using the `-i` argument:
+
+```bash
+xmake run c_scheme -i main.sch
